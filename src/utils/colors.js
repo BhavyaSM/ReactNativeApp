@@ -1,0 +1,16 @@
+export const colors = {
+  white: '#FFFFFF',
+  black: '#000',
+  primary: '#45484A',
+  secondary: '#AEB5BB',
+  gray: '#D9D9D9',
+  gray100: '#f0f0f0',
+  gray200: '#333',
+  gray300: '#555',
+  gray400: '#777',
+  blue: '#007BFF',
+  purple: '#36013F',
+  purple100: '#8A00C2',
+  success: '#008000',
+  red: '#FF0000',
+};

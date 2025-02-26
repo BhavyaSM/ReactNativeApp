@@ -45,9 +45,9 @@ const ProductListScreen: React.FC<{navigation: any}> = ({navigation}) => {
       <Card style={styles.card}>
         <Image source={{uri: item.images[0]}} style={styles.image} />
         <View style={styles.infoContainer}>
-          <Text style={styles.title}>{item.title}</Text>
-          <Text style={styles.price}>${item.price}</Text>
-          <Text style={styles.category}>{item.category.name}</Text>
+          <Text style={styles.title}>{item?.title}</Text>
+          <Text style={styles.price}>${item?.price}</Text>
+          <Text style={styles.category}>{item?.category?.name}</Text>
         </View>
       </Card>
     </TouchableOpacity>

@@ -39,7 +39,6 @@ export const fetchProducts = createAsyncThunk<Product[], void>(
       const response = await axios.get(PRODUCTS_URL);
       return response.data;
     } catch (err: any) {
-      console.error('Fetch Error:', err.response?.data || err.message);
       return rejectWithValue(err.response?.data || 'Failed to fetch products');
     }
   },

@@ -23,7 +23,7 @@ const CategoryScreen: React.FC = ({navigation}: any) => {
   };
 
   const dispatch = useAppDispatch();
-  const {products, loading} = useAppSelector(state => state.categoryList);
+  const {products, loading} = useAppSelector(state => state?.categoryList);
 
   useEffect(() => {
     dispatch(fetchProductsByCategory(categoryId));

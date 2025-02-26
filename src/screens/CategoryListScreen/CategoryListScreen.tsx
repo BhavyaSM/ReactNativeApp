@@ -17,7 +17,7 @@ import styles from './styles';
 
 const CategoryListScreen: React.FC = ({navigation}: any) => {
   const dispatch = useAppDispatch();
-  const {categories, loading} = useAppSelector(state => state.categories);
+  const {categories, loading} = useAppSelector(state => state?.categories);
 
   useEffect(() => {
     dispatch(fetchCategories());

@@ -67,10 +67,10 @@ const ProductDetailScreen: React.FC<{navigation: any; route: any}> = ({
           </View>
         ))}
       </ScrollView>
-      <Text style={styles.title}>{product.title}</Text>
-      <Text style={styles.price}>${product.price}</Text>
-      <Text style={styles.description}>{product.description}</Text>
-      <Text style={styles.category}>Category: {product.category.name}</Text>
+      <Text style={styles.title}>{product?.title}</Text>
+      <Text style={styles.price}>${product?.price}</Text>
+      <Text style={styles.description}>{product?.description}</Text>
+      <Text style={styles.category}>Category: {product?.category?.name}</Text>
     </SafeAreaView>
   );
 };

@@ -21,7 +21,7 @@ const LoginScreen: React.FC<{navigation: any}> = ({navigation}) => {
     dispatch(loginUser(reqParams))
       .then(response => {
         if (response?.meta?.requestStatus === 'fulfilled') {
-          navigation.navigate('ProductList'); // Navigate to ProductList on success
+          navigation.navigate('Products'); // Navigate to ProductList on success
         } else {
           Alert.alert('Invalid Username or Password');
         }

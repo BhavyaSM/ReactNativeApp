@@ -14,6 +14,7 @@ import {useAppDispatch, useAppSelector} from '../../redux/store/store';
 import styles from './styles';
 import {colors} from '../../utils/colors';
 import globalStyle from '../../utils/globalStyle';
+import Header from '../../components/Header';
 
 const ProductListScreen: React.FC<{navigation: any}> = ({navigation}) => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -53,11 +54,8 @@ const ProductListScreen: React.FC<{navigation: any}> = ({navigation}) => {
   );
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={{marginTop: 50}}>
-        <Text style={styles.header}>Products</Text>
-      </View>
-
+    <SafeAreaView style={globalStyle.container}>
+      <Header title="Products" />
       <TextInput
         style={styles.searchBar}
         placeholder="Search products..."

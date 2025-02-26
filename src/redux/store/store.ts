@@ -1,7 +1,10 @@
 import {configureStore} from '@reduxjs/toolkit';
 import userLoginReducer from '../slices/loginSlice';
 import productsReducer from '../slices/productSlice';
-import productDetailsReducer from '../slices/productDetailSlice.';
+import productDetailsReducer from '../slices/productDetailSlice';
+import profileReducer from '../slices/profileSlice'
+import categoriesReducer from'../slices/categorieSlice'
+
 import {
   persistStore,
   FLUSH,
@@ -18,6 +21,8 @@ const store = configureStore({
     userLogin: userLoginReducer,
     products: productsReducer,
     productDetails: productDetailsReducer,
+    userProfile:profileReducer,
+    categories:categoriesReducer
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

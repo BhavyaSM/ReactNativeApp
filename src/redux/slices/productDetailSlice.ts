@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
-import { PRODUCT_DETAIL_URL, PRODUCTS_URL } from "../../utils/baseUrls";
+import { PRODUCT_DETAIL_URL } from "../../utils/baseUrls";
 
 // Define Product Interface
 interface Category {
@@ -37,10 +37,8 @@ export const fetchProductDetails = createAsyncThunk<Product, number>(
   async (productId, { rejectWithValue }) => {
     try {
       const response = await axios.get(`${PRODUCT_DETAIL_URL}/${productId}`);
-      console.log("Product Detail Response:", response.data);
       return response.data; // A single product object
     } catch (err: any) {
-      console.error("Fetch Error:", err.response?.data || err.message);
       return rejectWithValue(err.response?.data || "Failed to fetch product details");
     }
   }

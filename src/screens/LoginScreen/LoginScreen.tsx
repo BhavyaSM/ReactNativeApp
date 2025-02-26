@@ -22,6 +22,8 @@ const LoginScreen: React.FC<{navigation: any}> = ({navigation}) => {
       .then(response => {
         if (response?.meta?.requestStatus === 'fulfilled') {
           navigation.navigate('Products'); // Navigate to ProductList on success
+          setEmail('');
+          setPassword('');
         } else {
           Alert.alert('Invalid Username or Password');
         }

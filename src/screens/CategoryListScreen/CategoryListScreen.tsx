@@ -6,6 +6,7 @@ import {
   Image,
   ActivityIndicator,
   SafeAreaView,
+  TouchableOpacity,
 } from 'react-native';
 import {useAppDispatch, useAppSelector} from '../../redux/store/store';
 import {fetchCategories} from '../../redux/slices/categorieSlice';
@@ -14,7 +15,7 @@ import globalStyle from '../../utils/globalStyle';
 import Header from '../../components/Header';
 import styles from './styles';
 
-const CategoryListScreen: React.FC = () => {
+const CategoryListScreen: React.FC = ({navigation}: any) => {
   const dispatch = useAppDispatch();
   const {categories, loading} = useAppSelector(state => state.categories);
 
@@ -39,13 +40,21 @@ const CategoryListScreen: React.FC = () => {
           data={categories}
           keyExtractor={item => item.id.toString()}
           contentContainerStyle={{paddingBottom: 20}}
+          showsVerticalScrollIndicator={false}
           renderItem={({item}) => (
-            <View style={{padding: 10}}>
+            <TouchableOpacity
+              style={{padding: 10}}
+              onPress={() =>
+                navigation.navigate('CategoryDetail', {
+                  categoryId: item.id,
+                  categoryName: item.name,
+                })
+              } // 👈 Navigate & Pass ID
+            >
               <Image source={{uri: item.image}} style={styles.image} />
               <Text style={styles.title}>{item.name}</Text>
-            </View>
+            </TouchableOpacity>
           )}
-          showsVerticalScrollIndicator={false}
         />
       )}
     </SafeAreaView>

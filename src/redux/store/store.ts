@@ -2,8 +2,9 @@ import {configureStore} from '@reduxjs/toolkit';
 import userLoginReducer from '../slices/loginSlice';
 import productsReducer from '../slices/productSlice';
 import productDetailsReducer from '../slices/productDetailSlice';
-import profileReducer from '../slices/profileSlice'
-import categoriesReducer from'../slices/categorieSlice'
+import profileReducer from '../slices/profileSlice';
+import categoriesReducer from '../slices/categorieSlice';
+import categoryList from '../slices/categoryListSlice';
 
 import {
   persistStore,
@@ -21,8 +22,9 @@ const store = configureStore({
     userLogin: userLoginReducer,
     products: productsReducer,
     productDetails: productDetailsReducer,
-    userProfile:profileReducer,
-    categories:categoriesReducer
+    userProfile: profileReducer,
+    categories: categoriesReducer,
+    categoryList: categoryList,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

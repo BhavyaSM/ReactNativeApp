@@ -6,6 +6,7 @@ import ProductListScreen from '../screens/ProductListScreen/ProductListScreen';
 import ProductDetailScreen from '../screens/ProductDetailScreen/ProductDetailScreen';
 import CustomDrawer from './CustomDrawer ';
 import CategoryListScreen from '../screens/CategoryListScreen/CategoryListScreen';
+import CategoryScreen from '../screens/CategoryScreen/CategoryScreen';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -24,6 +25,7 @@ const CategorStack = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="Categories" component={CategoryListScreen} />
+      <Stack.Screen name="CategoryDetail" component={CategoryScreen} />
     </Stack.Navigator>
   );
 };
@@ -32,7 +34,7 @@ const RootNavigation = () => {
   return (
     <Drawer.Navigator
       initialRouteName="Login"
-      drawerContent={props => <CustomDrawer {...props} />} 
+      drawerContent={props => <CustomDrawer {...props} />}
       screenOptions={{headerShown: false}}>
       <Drawer.Screen name="Login" component={LoginScreen} />
       <Drawer.Screen name="Products" component={ProductStack} />

@@ -45,6 +45,9 @@ const CustomDrawerContent = (props: any) => {
         <TouchableOpacity onPress={() => props.navigation.navigate('Category')}>
           <Text style={styles.menuItem}>Category</Text>
         </TouchableOpacity>
+        <TouchableOpacity onPress={() => props.navigation.navigate('Login')}>
+          <Text style={styles.menuItem}>Log-out</Text>
+        </TouchableOpacity>
       </View>
     </DrawerContentScrollView>
   );

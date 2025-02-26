@@ -1,7 +1,7 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
 import axios from 'axios';
-import { PROFILE_URL } from '../../utils/baseUrls';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {PROFILE_URL} from '../../utils/baseUrls';
 
 // Define user profile type
 interface UserProfile {
@@ -19,20 +19,31 @@ interface UserState {
   error: string | null;
 }
 
-// 🔹 Fetch user profile
-export const fetchProfile = createAsyncThunk<UserProfile, void, { rejectValue: string }>(
-  'user/fetchProfile',
-  async (_, { rejectWithValue }) => {
-    try {
-      const response = await axios.get<UserProfile>(PROFILE_URL);
-      return response.data;
-    } catch (err: any) {
-      return rejectWithValue(err.response?.data?.message || 'Failed to fetch profile');
+// 🔹 Fetch Profile with Token
+export const fetchProfile = createAsyncThunk<
+  UserProfile,
+  void,
+  {rejectValue: string}
+>('user/fetchProfile', async (_, {rejectWithValue}) => {
+  try {
+    const token = await AsyncStorage.getItem('access_token'); // 🔹 Get Token from Storage
+    if (!token) {
+      return rejectWithValue('No token found');
     }
-  }
-);
 
-// 🔹 Create user slice
+    const response = await axios.get<UserProfile>(PROFILE_URL, {
+      headers: {Authorization: `Bearer ${token}`}, // 🔹 Pass Token in Header
+    });
+
+    return response.data;
+  } catch (err: any) {
+    return rejectWithValue(
+      err.response?.data?.message || 'Failed to fetch profile',
+    );
+  }
+});
+
+// 🔹 Profile Slice
 const profileSlice = createSlice({
   name: 'userProfile',
   initialState: {
@@ -41,9 +52,9 @@ const profileSlice = createSlice({
     error: null,
   } as UserState,
   reducers: {},
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
-      .addCase(fetchProfile.pending, (state) => {
+      .addCase(fetchProfile.pending, state => {
         state.loading = true;
         state.error = null;
       })

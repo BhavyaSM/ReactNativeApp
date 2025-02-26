@@ -48,9 +48,9 @@ const ProductDetailScreen: React.FC<{navigation: any; route: any}> = ({
   return (
     <SafeAreaView style={styles.container}>
       <TouchableOpacity
-        style={styles.backButton}
+        style={globalStyle.backButton}
         onPress={() => navigation.goBack()}>
-        <Text style={styles.backText}>← Back</Text>
+        <Text style={globalStyle.backText}>← Back</Text>
       </TouchableOpacity>
 
       <ScrollView

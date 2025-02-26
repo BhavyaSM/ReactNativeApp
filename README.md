@@ -1,6 +1,10 @@
 <<<<<<< HEAD
 # ReactNativeApp
+<<<<<<< HEAD
 This is a shopping applicaion
+=======
+This is a shopping application
+>>>>>>> fc9ba8d970659a767bb1364733a5fc7a9f9fae90
 =======
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
